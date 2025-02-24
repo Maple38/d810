@@ -52,10 +52,12 @@ class D810Plugin(idaapi.plugin_t):
         if not ida_hexrays.init_hexrays_plugin():
             print("D-810 need Hex-Rays decompiler. Skipping")
             return idaapi.PLUGIN_SKIP
-
-        kv = ida_kernwin.get_kernel_version().split(".")
-        if (int(kv[0]) < 7) or (int(kv[1]) < 5):
-            print("D-810 need IDA version >= 7.5. Skipping")
+        
+        ver = float(ida_kernwin.get_kernel_version())
+        if ver < 7.5
+            print("Version mismatch; D-810 needs IDA version >= 7.5. Skipping")
+        if ver >= 8:
+            print(f"Notice: D-810 was built for IDA version 7.5. You are running v{ver}")
             return idaapi.PLUGIN_SKIP
         print("D-810 initialized (version {0})".format(D810_VERSION))
         return idaapi.PLUGIN_OK
