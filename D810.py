@@ -54,11 +54,11 @@ class D810Plugin(idaapi.plugin_t):
             return idaapi.PLUGIN_SKIP
         
         ver = float(ida_kernwin.get_kernel_version())
-        if ver < 7.5
+        if ver < 7.5:
             print("Version mismatch; D-810 needs IDA version >= 7.5. Skipping")
+            return idaapi.PLUGIN_SKIP
         if ver >= 8:
             print(f"Notice: D-810 was built for IDA version 7.5. You are running v{ver}")
-            return idaapi.PLUGIN_SKIP
         print("D-810 initialized (version {0})".format(D810_VERSION))
         return idaapi.PLUGIN_OK
 
